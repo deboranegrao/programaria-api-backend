@@ -1,9 +1,10 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express') //aqui estou iniciando o express
+const router = express.Router() //aqui estou configurando a primeira rota
 
-const app = express()
-const porta = 3333
+const app = express() //aqui estou iniciando o app
+const porta = 3333 //aqui estou criando a porta
 
+//aqui estou criando um array com a lista inicial de mulheres
 const mulheres = [
     {
         nome: 'Debora',
@@ -24,13 +25,15 @@ const mulheres = [
     }
 ]
 
+//GET
 function mostraMulheres(request, response){
     response.json(mulheres)
 }
 
+//PORTA
 function mostraPorta() {
     console.log("Servidor criado e rodando na porta", porta)
 }
 
-app.use(router.get('/mulheres', mostraMulheres))
-app.listen(porta, mostraPorta)
+app.use(router.get('/mulheres', mostraMulheres)) //configurei rota GET /mulheres
+app.listen(porta, mostraPorta) //servidor ouvindo a porta
