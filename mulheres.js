@@ -2,6 +2,9 @@ const express = require('express') //aqui estou iniciando o express
 const router = express.Router() //aqui estou configurando a primeira rota
 const { v4 : uuidv4 } = require('uuid') //aqui estou iniciando o uuid para criar ids únicos
 
+const conectaBancoDeDados = require('./bancoDeDados') //aqui estou puxando a conexão com o banco de dados
+conectaBancoDeDados() //aqui estou conectando com o banco de dados
+
 const app = express() //aqui estou iniciando o app
 app.use(express.json()) //aqui estou dizendo para o express usar json
 const porta = 3333 //aqui estou criando a porta
