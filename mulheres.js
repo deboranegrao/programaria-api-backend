@@ -9,21 +9,21 @@ const porta = 3333 //aqui estou criando a porta
 //aqui estou criando um array com a lista inicial de mulheres
 const mulheres = [
     {
-        id: 1,
+        id: '1',
         nome: 'Debora',
         imagem: 'https://media.licdn.com/dms/image/v2/D5603AQGL_64iRYaiyQ/profile-displayphoto-shrink_800_800/B56ZPXmseKGsAc-/0/1734489067499?e=1763596800&v=beta&t=v93X4aNvCkao2esogOwDzpREbcr9QTG239',
         minibio: 'Service Standards Specialist'
     },
 
     {
-        id: 2,
+        id: '2',
         nome: 'Maria',
         imagem: 'https://media.licdn.com/dms/image/D4D03AQH1X1nVbXK6xg/profile-displayphoto-shrink_800_800/0/1678886327511?e=1701302400&v=beta&t=Zk2fX4p3k3nE3O2b8k9YtYI3jU1g5r7r8H3F4JfJz0g',
         minibio: 'Software Engineer'
     },
 
     {
-        id: 3,
+        id: '3',
         nome: 'Nina',
         imagem: 'https://media.licdn.com/dms/image/D4D03AQH1X1nVbXK6xg/profile-displayphoto-shrink_800_800/0/1678886327511?e=1701302400&v=beta&t=Zk2fX4p3k3nE3O2b8k9YtYI3jU1g5r7r8H3F4JfJz0g',
         minibio: 'Hacker antirracista'
@@ -73,12 +73,29 @@ function corrigeMulher(request, response) {
     response.json(mulherEncontrada)
 }
 
+//DELETE
+function deletaMulher(request, response) {
+    function todasMenosEla(mulher) {
+        if (mulher.id !== request.params.id) {
+            return mulher
+        }
+
+    }
+
+    const mulheresQueFicam = mulheres.filter(todasMenosEla)
+
+    response.json(mulheresQueFicam)
+}
+
 //PORTA
 function mostraPorta() {
     console.log("Servidor criado e rodando na porta", porta)
 }
 
-app.use(router.get('/mulheres', mostraMulheres)) //configurei rota GET /mulheres
-app.use(router.post('/mulheres', criaMulher)) //configurei rota POST /mulheres
-app.use(router.patch('/mulheres/:id', corrigeMulher)) //configurei rota PATCH /mulheres/:id
-app.listen(porta, mostraPorta) //servidor ouvindo a porta
+router.get('/mulheres', mostraMulheres)
+router.post('/mulheres', criaMulher)
+router.patch('/mulheres/:id', corrigeMulher)
+router.delete('/mulheres/:id', deletaMulher)
+
+app.use(router)
+app.listen(porta, mostraPorta)
