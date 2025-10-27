@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-require('dotenv').config(MONGO_URL)
+require('dotenv').config()
 
 async function conectaBancoDeDados(){
     try {
