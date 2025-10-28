@@ -1,15 +1,17 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+require('dotenv').config(); // Load .env variables
 
 async function conectaBancoDeDados() {
     try {
-        console.log('Conexão com o banco de dados iniciada')
+        console.log('Conexão com o banco de dados iniciada');
 
-        await mongoose.connect(process.env.MONGO_URL)
+        await mongoose.connect(process.env.MONGO_URL);
 
-        console.log('Conectado ao banco de dados com sucesso!')
+        console.log('Conectado ao banco de dados com sucesso!');
     } catch (erro) {
-        console.log('Erro ao conectar ao banco de dados:', erro)
+        console.log('Erro ao conectar ao banco de dados:', erro);
     }
-
-module.exports = conectaBancoDeDados
 }
+
+// Export the function
+module.exports = conectaBancoDeDados;

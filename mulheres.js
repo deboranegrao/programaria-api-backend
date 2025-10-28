@@ -1,7 +1,7 @@
 const express = require('express') //aqui estou iniciando o express
 const router = express.Router() //aqui estou configurando a primeira rota
 const cors = require('cors') //aqui estou puxando o cors que permite consumir essa api no frontend
-const conectaBancoDeDados = require('./bancoDeDados') //aqui estou puxando a conexão com o banco de dados
+const conectaBancoDeDados = require('./dataBase') //aqui estou puxando a conexão com o banco de dados
 conectaBancoDeDados() //aqui estou conectando com o banco de dados
 
 const Mulher = require('./mulherModel') //aqui estou puxando o modelo mulher
