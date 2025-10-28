@@ -33,8 +33,8 @@ async function criaMulher(request, response) {
     })
 
     try{
-        const mulherCriada = await novaMulher.save() //aqui estou salvando a nova mulher no banco de dados
-        response.status(201).json(mulherCriada) //aqui estou retornando a nova mulher em formato json com o status 201
+        const createWoman = await novaMulher.save() //aqui estou salvando a nova mulher no banco de dados
+        response.status(201).json(createWoman) //aqui estou retornando a nova mulher em formato json com o status 201
     }catch(erro){
         console.log(erro)
     } 
@@ -90,3 +90,7 @@ router.delete('/mulheres/:id', deletaMulher)
 
 app.use(router)
 app.listen(porta, mostraPorta)
+
+app.get('/', (req, res) => {
+  res.send('API Mulheres está rodando 🚀');
+});
